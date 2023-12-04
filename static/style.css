@@ -1,0 +1,56 @@
+:root{
+    --text: #e6f7dc;
+    --background: #333;
+    --background-secondary: #282828;
+    --primary: #43EB63; /*#ade58b;*/
+    --secondary: #37a1d3;
+    --accent: #1e8681;
+}
+
+body{
+    background-color: var(--background);
+}
+
+.topnav {
+  text-align: right;
+}
+
+.icon{
+    width: 25px;
+    height: 25px;
+}
+
+.project_list{
+    color: var(--text);
+    border: 1px solid var(--primary);
+    border-radius: 10px;
+    padding: 1%;
+
+}
+
+.project{
+    border: 1px solid var(--accent);
+    background-color: var(--background-secondary);
+    border-radius: 10px;
+    margin: 0.8%;
+    margin-bottom: 2%;
+}
+
+.project:not(:last-child) {
+  margin-bottom: 0.8%;
+}
+
+a:visited{
+    color: var(--primary);
+    text-decoration: None;
+}
+
+a {
+    color: var(--primary);
+    text-decoration: None;
+}
+
+.project .description{
+    margin-left: 1%;
+}
+
