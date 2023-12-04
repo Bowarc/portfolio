@@ -55,7 +55,7 @@
 .card-bg {
     height: 128px;
     width: 128px;
-    background-color: #f9b234;
+    background-color: #f9b23430;
 
     z-index: 1;
     position: absolute;
@@ -68,21 +68,21 @@
 }
 
 .card:nth-child(2n) .card-bg {
-    background-color: #3ecd5e;
+    background-color: #3ecd5e30;
 }
 
 .card:nth-child(3n) .card-bg {
-    background-color: #e44002;
+    background-color: #e4400230;
 }
 
 .card:nth-child(4n) .card-bg {
-    background-color: #952aff;
+    background-color: #952aff30;
 }
 
 .card:nth-child(5n) .card-bg {
-    background-color: #cd3e94;
+    background-color: #cd3e9430;
 }
 
 .card:nth-child(6n) .card-bg {
-    background-color: #4c49ea;
+    background-color: #4c49ea30;
 }
