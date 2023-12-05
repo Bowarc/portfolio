@@ -16,7 +16,7 @@ function create_card(repo) {
         <div class="project card">
             <a href="https://github.com/${repo.owner_name}/${repo.name}" class="card-link"><div class="card-bg"></div>
                 <div class="card-title">
-                    <img src="../resources/${repo.language}.png" class="icon">
+                    <img src="../resources/${repo.language.toLowerCase()}.png" class="icon">
                     ${capitalizeFirstLetter(repo.name.replace("_", " "))}
                 </div>
                 <div class="card-description">${repo.description}</div>
