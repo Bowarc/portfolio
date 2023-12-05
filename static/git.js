@@ -19,8 +19,8 @@ class Repository {
         this.name = data["name"];
         this.owner_name = data["owner"]["login"];
         this.description = data["description"];
-        this.created_date = data["created_at"];
-        this.last_push_date = data["pushed_at"];
+        this.created_date = new Date(data["created_at"]);
+        this.last_push_date = new Date(data["pushed_at"]);
         this.language = data["language"];
         this.public = !data["private"];
         this.fork = data["fork"];
