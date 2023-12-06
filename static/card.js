@@ -16,14 +16,14 @@ function create_card(repo) {
         <div class="project card">
             <a href="https://github.com/${repo.owner_name}/${repo.name}" class="card-link"><div class="card-bg"></div>
                 <div class="card-title">
-                    <img src="../resources/${repo.language.toLowerCase()}.png" class="icon">
+                    <img src="./resources/${repo.language.toLowerCase()}.webp" alt="${repo.language} icon" class="icon">
                     ${capitalizeFirstLetter(repo.name.replace("_", " "))}
                 </div>
                 <div class="card-description">${repo.description}</div>
                 <div class="card-date-box">
                 Last update:
                 <span class="card-date">
-                ${repo.last_push_date.toLocaleDateString()} ${repo.last_push_date.getHours()}h${repo.last_push_date.getMinutes()}
+                ${repo.last_update.toLocaleDateString("fr-FR")} ${repo.last_update.getHours()}h${repo.last_update.getMinutes()}
                 </span>
                 </div>
             </a>
@@ -68,12 +68,14 @@ async function generate_cards(nbr_of_cards, required_repos) {
     });
 
     repo_list = repo_list.sort((a, b) => {
-        return new Date(b.last_push_date) - new Date(a.last_push_date);
+        console.log(`Compairing ${a.last_update} and ${b.last_update}`);
+        return b.last_update - a.last_update;
         // return b.size - a.size;
     });
 
 
-    for (repo of repo_list) {
+    for (index in repo_list) {
+        let repo = repo_list[index];
         let contains = false;
         for (name of required_repos) {
             if (name.toLowerCase() == repo.name.toLowerCase()) {
@@ -87,9 +89,7 @@ async function generate_cards(nbr_of_cards, required_repos) {
             let project_list = document.getElementById("project_list");
             project_list.appendChild(card);
 
-            repo_list.splice(repo_list.findIndex((repo2, index) => {
-                return repo.name == repo2.name
-            }), 1);
+            repo_list.splice(index, 1);
 
             nbr_of_cards--;
 

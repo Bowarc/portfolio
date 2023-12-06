@@ -4,6 +4,30 @@ const MINUTE = SECOND * 60;
 const HOUR = MINUTE * 60;
 const DAY = HOUR * 24;
 
+// Fck you js
+class BetterDate{
+    year;
+    month;
+    day;
+    hour;
+    minute;
+    second;
+    constructor(date_string){
+        // Js slice is exclude - include
+        this.year = date_string.slice(0, 4);
+        this.month = date_string.slice(5, 7);
+        this.day = date_string.slice(8, 10);
+        this.hour = date_string.slice(11, 13);
+        this.minute = date_string.slice(14, 16);
+        this.second = date_string.slice(17, 19);
+
+
+
+
+        console.log(this, new Date(this.year, this.month, this.day, this.hour, this.minute, this.second), date_string)
+    }
+}
+
 
 class Repository {
     name;
@@ -16,11 +40,12 @@ class Repository {
     fork;
     size
     constructor(data) {
+        console.log(data["updated_at"]);
         this.name = data["name"];
         this.owner_name = data["owner"]["login"];
         this.description = data["description"];
         this.created_date = new Date(data["created_at"]);
-        this.last_push_date = new Date(data["pushed_at"]);
+        this.last_update = new Date(data["updated_at"]);
         this.language = data["language"];
         this.public = !data["private"];
         this.fork = data["fork"];

@@ -2,9 +2,10 @@
     --text: #e6f7dc;
     --background: #333;
     --background-secondary: #282828;
-    --primary: #43EB63; /*#ade58b;*/
-    --secondary: #37a1d3;
-    --accent: #1e8681;
+    --background-accent: #1e8681;
+    --text-primary: #43EB63; /*#ade58b;*/
+    --text-secondary: #37a1d3;
+    --text-accent: #f9b234;
 }
 
 body{
@@ -25,7 +26,7 @@ body{
 }
 
 .project_list{
-    color: var(--text);
+    color: var(--text-primary);
 /*    border: 1px solid var(--primary);*/
     border-radius: 10px;
     padding: 1%;
@@ -38,7 +39,7 @@ body{
 }
 
 .project{
-    border: 1px solid var(--accent);
+    border: 1px solid var(--background-accent);
 /*    background-color: var(--background-secondary);*/
     border-radius: 10px;
     margin: 0.8%;
@@ -53,12 +54,12 @@ body{
 }
 
 a:visited{
-    color: var(--primary);
+    color: var(--text-primary);
     text-decoration: None;
 }
 
 a {
-    color: var(--primary);
+    color: var(--text-primary);
     text-decoration: None;
 }
 

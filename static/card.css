@@ -10,10 +10,11 @@
     display: block;
 /*    padding: 30px 20px;*/
     padding: 3% 2%;
-    background-color: var(--background-secondary);
+    background-color: #282828;
     overflow: hidden;
     position: relative;
 }
+
 
 .card-link:hover,
 .card-link:hover .card-date {
@@ -29,26 +30,26 @@
 .card-title {
     font-weight: bold;
     font-size: 30px;
-    color: var(--primary);
+    color: var(--text-primary);
     margin-bottom: 10px;
 }
 
 .card-description{
     margin-bottom: 10px;
-    color: var(--secondary);
+    color: var(--text-secondary);
 }
 
 .card-date-box {
     font-size: 18px;
-    color: var(--accent);
-
+    color: var(--text-secondary);
     z-index: 2;
     position: relative;
 }
 
+
 .card-date {
     font-weight: bold;
-    color: #f9b234;
+    color: var(--text-accent);
 
     transition: color .5s ease
 }
