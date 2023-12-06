@@ -8,7 +8,8 @@
 
 .card-link {
     display: block;
-    padding: 30px 20px;
+/*    padding: 30px 20px;*/
+    padding: 3% 2%;
     background-color: var(--background-secondary);
     overflow: hidden;
     position: relative;

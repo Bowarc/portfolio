@@ -8,7 +8,11 @@
 }
 
 body{
-    background-color: var(--background);
+/*    background-color: var(--background);*/
+    background-color: transparent;
+    width:  100%;
+    height: 100%;
+    margin: 0;
 }
 
 .topnav {
@@ -22,18 +26,26 @@ body{
 
 .project_list{
     color: var(--text);
-    border: 1px solid var(--primary);
+/*    border: 1px solid var(--primary);*/
     border-radius: 10px;
     padding: 1%;
+    margin-left: 25%;
+    width: 50%;
+    height: 100%;
 
+/*    position: absolute;
+    top: 50%;*/
 }
 
 .project{
     border: 1px solid var(--accent);
-    background-color: var(--background-secondary);
+/*    background-color: var(--background-secondary);*/
     border-radius: 10px;
     margin: 0.8%;
+    margin-left: 10%;
     margin-bottom: 2%;
+    width: 80%;
+
 }
 
 .project:not(:last-child) {

@@ -23,7 +23,7 @@ function create_card(repo) {
                 <div class="card-date-box">
                 Last update:
                 <span class="card-date">
-                ${repo.last_push_date}
+                ${repo.last_push_date.toLocaleDateString()} ${repo.last_push_date.getHours()}h${repo.last_push_date.getMinutes()}
                 </span>
                 </div>
             </a>
@@ -33,27 +33,18 @@ function create_card(repo) {
 }
 
 
-async function generate_cards() {
+async function generate_cards(nbr_of_cards, required_repos) {
 
     const hugolz_repo_list = await list_user_repo("hugolz");
     const bowarc_repo_list = await list_user_repo("Bowarc");
 
     if (hugolz_repo_list == -1 || bowarc_repo_list == -1) {
-        console.log("fuck");
-        return
+        return;
     }
 
     let repo_list = bowarc_repo_list.concat(hugolz_repo_list);
 
-    let ordered_repo_list = repo_list.sort((a, b) => {
-        return new Date(b.last_push_date) - new Date(a.last_push_date);
-        // return b.size - a.size;
-    });
-
-    console.log(ordered_repo_list);
-
-
-    let repos = ordered_repo_list.filter((repo, index) => {
+    repo_list = repo_list.filter((repo, index) => {
         // False to remove the element
         console.log(`${repo.owner_name} | ${repo.name}`);
         if (repo.fork) {
@@ -73,23 +64,52 @@ async function generate_cards() {
             return false;
         }
 
-        // for (let index2 in ordered_repo_list) {
-        //     let repo2 = ordered_repo_list[index2];
-        //     if (repo.name === repo2.name && index !== index2) {
-        //         return false;
-        //     }
-        // }
         return true;
     });
 
-    const nb_of_repos = 7;
+    repo_list = repo_list.sort((a, b) => {
+        return new Date(b.last_push_date) - new Date(a.last_push_date);
+        // return b.size - a.size;
+    });
 
-    for (let i = 0; i < nb_of_repos; i++) {
-        let card = create_card(repos[i]);
+
+    for (repo of repo_list) {
+        let contains = false;
+        for (name of required_repos) {
+            if (name.toLowerCase() == repo.name.toLowerCase()) {
+                contains = true;
+                break
+            }
+        }
+
+        if (contains) {
+            let card = create_card(repo);
+            let project_list = document.getElementById("project_list");
+            project_list.appendChild(card);
+
+            repo_list.splice(repo_list.findIndex((repo2, index) => {
+                return repo.name == repo2.name
+            }), 1);
+
+            nbr_of_cards--;
+
+        }
+    }
+
+
+    console.log(repo_list);
+
+
+    for (let i = 0; i < nbr_of_cards; i++) {
+        let repo = repo_list[i];
+        if (repo == null) {
+            break
+        }
+        let card = create_card(repo);
 
         let project_list = document.getElementById("project_list");
         project_list.appendChild(card);
     }
 }
 
-generate_cards()
+generate_cards(5, ["chess_game", "lumin", "cdn", "crates", "binput_sim"]);
