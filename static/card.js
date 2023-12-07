@@ -1,14 +1,4 @@
-function elementFromHtml(html) {
-    const template = document.createElement("template");
 
-    template.innerHTML = html.trim();
-
-    return template.content.firstElementChild;
-}
-
-function capitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-}
 
 
 function create_card(repo) {

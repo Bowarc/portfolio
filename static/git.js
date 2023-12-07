@@ -21,9 +21,6 @@ class BetterDate{
         this.minute = date_string.slice(14, 16);
         this.second = date_string.slice(17, 19);
 
-
-
-
         console.log(this, new Date(this.year, this.month, this.day, this.hour, this.minute, this.second), date_string)
     }
 }
@@ -187,5 +184,4 @@ async function main() {
         console.log(repo.name)
     }
 }
-
 // main();
