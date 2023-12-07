@@ -41,11 +41,12 @@ class Repository {
     size
     constructor(data) {
         console.log(data["updated_at"]);
+        console.log(Math.max.apply(null, [new Date(data["updated_at"]), new Date(data["pushed_at"])]));
         this.name = data["name"];
         this.owner_name = data["owner"]["login"];
         this.description = data["description"];
         this.created_date = new Date(data["created_at"]);
-        this.last_update = new Date(data["updated_at"]);
+        this.last_update = new Date(Math.max.apply(null, [new Date(data["updated_at"]), new Date(data["pushed_at"])])); //  new Date(data["updated_at"]);
         this.language = data["language"];
         this.public = !data["private"];
         this.fork = data["fork"];

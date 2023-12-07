@@ -68,23 +68,18 @@ async function generate_cards(nbr_of_cards, required_repos) {
     });
 
     repo_list = repo_list.sort((a, b) => {
-        console.log(`Compairing ${a.last_update} and ${b.last_update}`);
+        // console.log(`Compairing ${a.last_update} and ${b.last_update}`);
         return b.last_update - a.last_update;
         // return b.size - a.size;
     });
 
 
-    for (index in repo_list) {
+    let index = 0;
+    while (index < repo_list.length){
         let repo = repo_list[index];
-        let contains = false;
-        for (name of required_repos) {
-            if (name.toLowerCase() == repo.name.toLowerCase()) {
-                contains = true;
-                break
-            }
-        }
 
-        if (contains) {
+        if (required_repos.includes(repo.name.toLowerCase())) {
+            // console.log(`shortcutting default sort with ${repo.name}`);
             let card = create_card(repo);
             let project_list = document.getElementById("project_list");
             project_list.appendChild(card);
@@ -92,13 +87,11 @@ async function generate_cards(nbr_of_cards, required_repos) {
             repo_list.splice(index, 1);
 
             nbr_of_cards--;
-
-        }
+        }else{
+            // console.log(`${repo.name} not in the required list`)
+            index++;
+        }        
     }
-
-
-    console.log(repo_list);
-
 
     for (let i = 0; i < nbr_of_cards; i++) {
         let repo = repo_list[i];
